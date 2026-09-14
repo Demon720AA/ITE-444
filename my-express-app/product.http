@@ -1,0 +1,54 @@
+### GET product
+GET http://localhost:3000/products
+
+### POST product
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+ "name":"MacBook Air",
+ "price":34900,
+ "stock":5
+}
+
+### UPDATE
+PUT http://localhost:3000/products/1
+Content-Type: application/json
+{
+ "name":"iPhone 16 Pro",
+ "price":45900,
+ "stock":20
+}
+
+### DELETE product
+DELETE http://localhost:3000/products/1
+
+### GET car
+GET http://localhost:3000/car
+
+### POST car
+POST http://localhost:3000/car
+Content-Type: application/json
+
+{
+ "name":"McLaren",
+ "engine":"M840T",
+ "power":720,
+ "price":30000000,
+ "stock":5
+}
+
+### UPDATE
+PUT http://localhost:3000/car/1
+Content-Type: application/json
+
+{
+ "name":"BMW M5 E34",
+ "engine":"S38B38",
+ "power": 340,
+ "price":45900,
+ "stock":20
+}
+
+### DELETE car
+DELETE http://localhost:3000/car/5

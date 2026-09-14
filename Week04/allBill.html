@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบคิดค่าน้ำค่าไฟ</title>
+    <!-- ใช้ Bootstrap 5 เพื่อความสวยงามและการจัดเลย์เอาต์ตามภาพ -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #85a8d3; /* สีโทนฟ้าอมเทาตามภาพ */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        .form-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 30px;
+        }
+        .header-title {
+            color: #d10808; /* สีแดงเข้มด้านบน */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: 500;
+        }
+        /* ปรับแต่งสไตล์ของ Input ให้มนและมีมิติตามภาพ */
+        .form-control, .form-select {
+            background-color: #d2daf1 !important;
+            border: 1px solid #a3b8cc;
+            border-radius: 8px;
+        }
+        .form-control:focus, .form-select:focus {
+            background-color: #e2e8f7 !important;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+        }
+        .readonly-input {
+            background-color: #c5cfe9 !important;
+            font-weight: bold;
+        }
+        .lbl-sub {
+            font-size: 0.85rem;
+            color: #555;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .unit-text {
+            align-self: center;
+            margin-top: 24px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-container">
+        <h1 class="header-title">ระบบคิดค่าน้ำค่าไฟ</h1>
+        <div class="section-title">ฟอร์มคิดค่าเช่า</div>
+
+        <form id="rentalForm" onsubmit="event.preventDefault(); alert('บันทึกข้อมูลเรียบร้อยแล้ว!');">
+            
+            <!-- เลขห้อง -->
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">เลขห้อง</label>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" id="roomNumber" value="404"  oninput="calculateAll()">
+                    <!-- <select class="form-select" id="roomNumber">
+                        <option value="2002">2002</option>
+                        <option value="2003">2003</option>
+                    </select> -->
+                </div>
+            </div>
+
+            <!-- รอบบิล -->
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">รอบบิล</label>
+                <div class="col-sm-4">
+                    <select class="form-select" id="billingCycle">
+                        <option value="2569-04">-- เมษายน 2569 --</option>
+                        <option value="2569-05">-- พฤษภาคม 2569 --</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- ค่าเช่า -->
+            <div class="row mb-4">
+                <label class="col-sm-2 col-form-label">ค่าเช่า</label>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" id="roomRent" value="3500" oninput="calculateAll()">
+                </div>
+            </div>
+
+            <!-- ค่าน้ำ -->
+            <div class="row mb-3 align-items-end">
+                <label class="col-sm-2 col-form-label pb-2 fw-bold">ค่าน้ำ</label>
+                <div class="col">
+                    <span class="lbl-sub">เลขมิเตอร์ครั้งนี้</span>
+                    <input type="number" class="form-control" id="waterCurrent" value="100" oninput="calculateAll()">
+                </div>
+                <div class="col">
+                    <span class="lbl-sub">ครั้งก่อน</span>
+                    <input type="number" class="form-control" id="waterPrevious" value="85" oninput="calculateAll()">
+                </div>
+                <div class="col">
+                    <span class="lbl-sub">หน่วยที่ใช้</span>
+                    <input type="number" class="form-control readonly-input" id="waterUsed" readonly>
+                </div>
+                <div class="col">
+                    <span class="lbl-sub">ราคา/หน่วย</span>
+                    <input type="number" class="form-control" id="waterRate" value="20" oninput="calculateAll()">
+                </div>
+                <div class="col">
+                    <span class="lbl-sub">รวม(บาท)</span>
+                    <input type="number" class="form-control readonly-input" id="waterTotal" readonly>
+                </div>
+            </div>
+
+            <!-- ค่าไฟ -->
+            <div class="row mb-4 align-items-end">
+                <label class="col-sm-2 col-form-label pb-2 fw-bold">ค่าไฟ</label>
+                <div class="col">
+                    <span class="lbl-sub">เลขมิเตอร์ครั้งนี้</span>
+                    <input type="number" class="form-control" id="electricCurrent" value="100" oninput="calculateAll()">
+                </div>
+                <div class="col">
+                    <span class="lbl-sub">ครั้งก่อน</span>
+                    <input type="number" class="form-control" id="electricPrevious" value="90" oninput="calculateAll()">
+                </div>
+                <div class="col">
+                    <span class="lbl-sub">หน่วยที่ใช้</span>
+                    <input type="number" class="form-control readonly-input" id="electricUsed" readonly>
+                </div>
+                <div class="col">
+                    <span class="lbl-sub">ราคา/หน่วย</span>
+                    <input type="number" class="form-control" id="electricRate" value="15" oninput="calculateAll()">
+                </div>
+                <div class="col">
+                    <span class="lbl-sub">รวม(บาท)</span>
+                    <input type="number" class="form-control readonly-input" id="electricTotal" readonly>
+                </div>
+            </div>
+
+            <!-- ค่าที่จอดรถ -->
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">ค่าที่จอดรถ</label>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" id="parkingFee" value="0" oninput="calculateAll()">
+                </div>
+                <div class="col-sm-4 unit-text text-muted ps-0" style="margin-top: 6px;">บาท</div>
+            </div>
+
+            <!-- ค่าส่วนกลาง -->
+            <div class="row mb-4">
+                <label class="col-sm-2 col-form-label">ค่าส่วนกลาง</label>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" id="centralFee" value="500" oninput="calculateAll()">
+                </div>
+                <div class="col-sm-4 unit-text text-muted ps-0" style="margin-top: 6px;">บาท/เดือน</div>
+            </div>
+
+            <!-- รวมทั้งสิ้น -->
+            <div class="row mb-4">
+                <label class="col-sm-2 col-form-label fw-bold">รวมทั้งสิ้น</label>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control readonly-input" id="grandTotal" readonly>
+                </div>
+            </div>
+
+            <!-- ปุ่มบันทึก -->
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-primary px-4 py-2" style="background-color: #0d47a1; border-radius: 6px;">บันทึก</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script>
+function calculateAll() {
+    // 1. ค่าเช่าพื้นฐาน
+    const roomRent = parseFloat(document.getElementById('roomRent').value) || 0;
+
+    // 2. คำนวณค่าน้ำ
+    const waterCurrent = parseFloat(document.getElementById('waterCurrent').value) || 0;
+    const waterPrevious = parseFloat(document.getElementById('waterPrevious').value) || 0;
+    const waterRate = parseFloat(document.getElementById('waterRate').value) || 0;
+    
+    let waterUsed = waterCurrent - waterPrevious;
+    if (waterUsed < 0) waterUsed = 0; // ป้องกันค่าติดลบ
+    const waterTotal = waterUsed * waterRate;
+
+    // แสดงผลค่าน้ำย่อย
+    document.getElementById('waterUsed').value = waterUsed;
+    document.getElementById('waterTotal').value = waterTotal;
+
+    // 3. คำนวณค่าไฟ
+    const electricCurrent = parseFloat(document.getElementById('electricCurrent').value) || 0;
+    const electricPrevious = parseFloat(document.getElementById('electricPrevious').value) || 0;
+    const electricRate = parseFloat(document.getElementById('electricRate').value) || 0;
+
+    let electricUsed = electricCurrent - electricPrevious;
+    if (electricUsed < 0) electricUsed = 0; // ป้องกันค่าติดลบ
+    const electricTotal = electricUsed * electricRate;
+
+    // แสดงผลค่าไฟย่อย
+    document.getElementById('electricUsed').value = electricUsed;
+    document.getElementById('electricTotal').value = electricTotal;
+
+    // 4. ค่าใช้จ่ายอื่นๆ
+    const parkingFee = parseFloat(document.getElementById('parkingFee').value) || 0;
+    const centralFee = parseFloat(document.getElementById('centralFee').value) || 0;
+
+    // 5. คำนวณยอดรวมทั้งสิ้น
+    const grandTotal = roomRent + waterTotal + electricTotal + parkingFee + centralFee;
+    document.getElementById('grandTotal').value = grandTotal;
+}
+
+// เรียกให้ฟังก์ชันทำงานครั้งแรกทันทีที่โหลดหน้าเว็บเสร็จ เพื่อดึงค่าเริ่มต้น (Default value) มาแสดงผลรวม
+window.onload = calculateAll;
+</script>
+
+</body>
+</html>

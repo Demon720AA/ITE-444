@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>คิดค่าน้ำค่าไฟ</title>
+</head>
+<body>
+    <h2>คิดค่าน้ำค่าไฟ</h2>
+    
+    <!-- ส่วนค่าน้ำ: เพิ่ม oninput ให้คำนวณทันทีเมื่อมีการเปลี่ยนแปลงตัวเลข -->
+    <label>น้ำ</label>
+    <input type="number" id="water" oninput="calculateTotal()">
+    <label>หน่วยละ</label>
+    <input type="number" id="waterRate" oninput="calculateTotal()">
+    <label>รวม</label>
+    <input type="number" id="waterTotal" readonly><br><br>
+
+    <!-- ส่วนค่าไฟ: เพิ่ม oninput ให้คำนวณพร้อมกัน -->
+    <label>ไฟ</label>
+    <input type="number" id="electric" oninput="calculateTotal()">
+    <label>หน่วยละ</label>
+    <input type="number" id="electricRate" oninput="calculateTotal()">
+    <label>รวม</label>
+    <input type="number" id="electricTotal" readonly><br><br>
+
+    <label>รวมทั้งสิ้น</label>
+    <input type="number" id="total" readonly>
+
+<script>
+function calculateTotal() {
+    let water = document.getElementById("water").value;
+    let electric = document.getElementById("electric").value
+    
+    let waterRate = document.getElementById("waterRate").value;
+    let electricRate = document.getElementById("electricRate").value
+
+    let waterTotal = water * waterRate;
+    let electricTotal = electric * electricRate;
+    
+    let grandTotal = waterTotal + electricTotal;
+
+    document.getElementById('waterTotal').value = waterTotal;
+    document.getElementById('electricTotal').value = electricTotal;
+    document.getElementById('total').value = grandTotal;
+}
+</script>
+</body>
+</html>

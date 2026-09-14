@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>คำนวนค่าน้ำค่าไฟ</title>
+    </head>
+    <body>
+        <h2>คำนวนค่าน้ำค่าไฟ</h2>
+        <label>หน่วยน้ำ:</label>
+        <input type="number" id="water"><br><br>
+
+        <label>หน่วยไฟ:</label>
+        <input type="number" id="electric"><br><br>
+
+        <button onclick="calculate()">คำนวน</button>
+        <h3 id="result"></h3>
+    </body>
+    <script>
+    function calculate() {
+        let water = document.getElementById("water").value;
+        let electric = document.getElementById("electric").value
+
+        let waterRate = 10;
+        let electricRate = 5;
+
+        let waterTotal = (water * waterRate);
+        let electricTotal = (electric * electricRate);
+        let total = (waterTotal + electricTotal);
+
+        document.getElementById("result").innerHTML =
+            "ค่าน้ำ: " + waterTotal + " บาท <br>" +
+            "ค่าไฟ: " + electricTotal + " บาท <br>" +
+            "รวมทั้งหมด: " + total + "บาท";
+    }
+    </script>
+</html>
+

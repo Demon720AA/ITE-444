@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "name": "Somchai",
+        "major": "IT"
+    },
+    {
+        "id": 2,
+        "name": "Suda",
+        "major": "CS"
+    },
+    {
+        "id": 3,
+        "name": "Anan",
+        "major": "CE"
+    },
+    {
+        "id": 4,
+        "name": "Supanut",
+        "major": "IT"
+    },
+    {
+        "id": 5,
+        "name": "Kanya",
+        "major": "SE"
+    },
+    {
+        "id": 6,
+        "name": "Prasert",
+        "major": "DS"
+    },
+    {
+        "id": 7,
+        "name": "Nipon",
+        "major": "CS"
+    },
+    {
+        "id": 8,
+        "name": "Pimchanok",
+        "major": "IT"
+    },
+    {
+        "id": 9,
+        "name": "Chaiwat",
+        "major": "CE"
+    },
+    {
+        "id": 10,
+        "name": "Rattana",
+        "major": "AI"
+    }
+]
