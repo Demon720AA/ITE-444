@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
+  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -27,5 +28,17 @@ model tbl_test {
   id         Int      @id @default(autoincrement())
   name       String   @db.VarChar(150)
   lastname   String   @db.VarChar(200)
+  dateCreate DateTime @default(now()) @db.Timestamp(0)
+}
+
+model tbl_std {
+  id         Int      @id @default(autoincrement())
+  std_code   String   @unique @db.VarChar(15)
+  std_name   String   @db.VarChar(200)
+  dateCreate DateTime @default(now()) @db.Timestamp(0)
+}
+
+model tbl_counter {
+  id         Int      @id @default(autoincrement())
   dateCreate DateTime @default(now()) @db.Timestamp(0)
 }

@@ -16,61 +16,44 @@ import type * as Prisma from "./prismaNamespace.ts"
 
 
 const config: runtime.GetPrismaClientConfig = {
-  "generator": {
-    "name": "client",
-    "provider": {
-      "fromEnvVar": null,
-      "value": "prisma-client"
-    },
-    "output": {
-      "value": "/run/media/demon72/MainDisk/Normal File/TNI Year2/Term1/ITE-444/Lab/nextProjectTNI-IT2026-main/next-app-week10/generated/prisma",
-      "fromEnvVar": null
-    },
-    "config": {
-      "engineType": "library"
-    },
-    "binaryTargets": [
-      {
-        "fromEnvVar": null,
-        "value": "rhel-openssl-3.0.x",
-        "native": true
-      }
-    ],
-    "previewFeatures": [],
-    "sourceFilePath": "/run/media/demon72/MainDisk/Normal File/TNI Year2/Term1/ITE-444/Lab/nextProjectTNI-IT2026-main/next-app-week10/prisma/schema.prisma",
-    "isCustomOutput": true
-  },
-  "relativePath": "../../prisma",
-  "clientVersion": "6.19.3",
-  "engineVersion": "c2990dca591cba766e3b7ef5d9e8a84796e47ab7",
-  "datasourceNames": [
-    "db"
-  ],
+  "previewFeatures": [],
+  "clientVersion": "7.10.0",
+  "engineVersion": "0edf323efd1d98336f3f0a68684b56f689b900d3",
   "activeProvider": "mysql",
-  "postinstall": false,
-  "inlineDatasources": {
-    "db": {
-      "url": {
-        "fromEnvVar": "DATABASE_URL",
-        "value": null
-      }
-    }
-  },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel products {\n  id          Int     @id @default(autoincrement())\n  name        String  @db.VarChar(100)\n  price       Decimal @db.Decimal(10, 2)\n  img_url     String? @db.VarChar(255)\n  description String? @db.Text\n  stock       Int\n}\n\nmodel student {\n  id            Int      @id @default(autoincrement())\n  student_code  String   @unique(map: \"unique_student_code\") @db.VarChar(15)\n  student_name  String   @db.VarChar(150)\n  student_major String   @db.VarChar(200)\n  dateCreate    DateTime @default(now()) @db.Timestamp(0)\n}\n\nmodel tbl_test {\n  id         Int      @id\n  name       String   @db.VarChar(150)\n  lastname   String   @db.VarChar(200)\n  dateCreate DateTime @db.Timestamp(0)\n}\n",
-  "inlineSchemaHash": "e98a789388ed3f2b4b3e34a8181ce0bb9fd89e314f68c15a7db9c8751ac2bcc5",
-  "copyEngine": true,
+  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n}\n\nmodel products {\n  id          Int     @id @default(autoincrement())\n  name        String  @db.VarChar(100)\n  price       Decimal @db.Decimal(10, 2)\n  img_url     String? @db.VarChar(255)\n  description String? @db.Text\n  stock       Int\n}\n\nmodel student {\n  id            Int      @id @default(autoincrement())\n  student_code  String   @unique(map: \"unique_student_code\") @db.VarChar(15)\n  student_name  String   @db.VarChar(150)\n  student_major String   @db.VarChar(200)\n  dateCreate    DateTime @default(now()) @db.Timestamp(0)\n}\n\nmodel tbl_test {\n  id         Int      @id @default(autoincrement())\n  name       String   @db.VarChar(150)\n  lastname   String   @db.VarChar(200)\n  dateCreate DateTime @default(now()) @db.Timestamp(0)\n}\n\nmodel tbl_std {\n  id         Int      @id @default(autoincrement())\n  std_code   String   @unique @db.VarChar(15)\n  std_name   String   @db.VarChar(200)\n  dateCreate DateTime @default(now()) @db.Timestamp(0)\n}\n\nmodel tbl_counter {\n  id         Int      @id @default(autoincrement())\n  dateCreate DateTime @default(now()) @db.Timestamp(0)\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
     "types": {}
   },
-  "dirname": ""
+  "parameterizationSchema": {
+    "strings": [],
+    "graph": ""
+  }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"products\":{\"dbName\":null,\"schema\":null,\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"nativeType\":null,\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"100\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"price\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Decimal\",\"nativeType\":[\"Decimal\",[\"10\",\"2\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"img_url\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"255\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"description\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"Text\",[]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"stock\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"student\":{\"dbName\":null,\"schema\":null,\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"nativeType\":null,\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"student_code\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":true,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"15\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"student_name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"150\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"student_major\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"200\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"dateCreate\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"DateTime\",\"nativeType\":[\"Timestamp\",[\"0\"]],\"default\":{\"name\":\"now\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"tbl_test\":{\"dbName\":null,\"schema\":null,\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"nativeType\":null,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"150\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"lastname\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"nativeType\":[\"VarChar\",[\"200\"]],\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"dateCreate\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"nativeType\":[\"Timestamp\",[\"0\"]],\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false}},\"enums\":{},\"types\":{}}")
-config.engineWasm = undefined
-config.compilerWasm = undefined
+config.runtimeDataModel = JSON.parse("{\"models\":{\"products\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Decimal\"},{\"name\":\"img_url\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"stock\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null,\"schema\":null},\"student\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"student_code\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"student_name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"student_major\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"dateCreate\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null,\"schema\":null},\"tbl_test\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lastname\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"dateCreate\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null,\"schema\":null},\"tbl_std\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"std_code\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"std_name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"dateCreate\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null,\"schema\":null},\"tbl_counter\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"dateCreate\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null,\"schema\":null}},\"enums\":{},\"types\":{}}")
+config.parameterizationSchema = {
+  strings: JSON.parse("[\"where\",\"products.findUnique\",\"products.findUniqueOrThrow\",\"orderBy\",\"cursor\",\"products.findFirst\",\"products.findFirstOrThrow\",\"products.findMany\",\"data\",\"products.createOne\",\"products.createMany\",\"products.updateOne\",\"products.updateMany\",\"create\",\"update\",\"products.upsertOne\",\"products.deleteOne\",\"products.deleteMany\",\"having\",\"_count\",\"_avg\",\"_sum\",\"_min\",\"_max\",\"products.groupBy\",\"products.aggregate\",\"student.findUnique\",\"student.findUniqueOrThrow\",\"student.findFirst\",\"student.findFirstOrThrow\",\"student.findMany\",\"student.createOne\",\"student.createMany\",\"student.updateOne\",\"student.updateMany\",\"student.upsertOne\",\"student.deleteOne\",\"student.deleteMany\",\"student.groupBy\",\"student.aggregate\",\"tbl_test.findUnique\",\"tbl_test.findUniqueOrThrow\",\"tbl_test.findFirst\",\"tbl_test.findFirstOrThrow\",\"tbl_test.findMany\",\"tbl_test.createOne\",\"tbl_test.createMany\",\"tbl_test.updateOne\",\"tbl_test.updateMany\",\"tbl_test.upsertOne\",\"tbl_test.deleteOne\",\"tbl_test.deleteMany\",\"tbl_test.groupBy\",\"tbl_test.aggregate\",\"tbl_std.findUnique\",\"tbl_std.findUniqueOrThrow\",\"tbl_std.findFirst\",\"tbl_std.findFirstOrThrow\",\"tbl_std.findMany\",\"tbl_std.createOne\",\"tbl_std.createMany\",\"tbl_std.updateOne\",\"tbl_std.updateMany\",\"tbl_std.upsertOne\",\"tbl_std.deleteOne\",\"tbl_std.deleteMany\",\"tbl_std.groupBy\",\"tbl_std.aggregate\",\"tbl_counter.findUnique\",\"tbl_counter.findUniqueOrThrow\",\"tbl_counter.findFirst\",\"tbl_counter.findFirstOrThrow\",\"tbl_counter.findMany\",\"tbl_counter.createOne\",\"tbl_counter.createMany\",\"tbl_counter.updateOne\",\"tbl_counter.updateMany\",\"tbl_counter.upsertOne\",\"tbl_counter.deleteOne\",\"tbl_counter.deleteMany\",\"tbl_counter.groupBy\",\"tbl_counter.aggregate\",\"AND\",\"OR\",\"NOT\",\"id\",\"dateCreate\",\"equals\",\"in\",\"notIn\",\"lt\",\"lte\",\"gt\",\"gte\",\"not\",\"std_code\",\"std_name\",\"contains\",\"startsWith\",\"endsWith\",\"search\",\"name\",\"lastname\",\"student_code\",\"student_name\",\"student_major\",\"price\",\"img_url\",\"description\",\"stock\",\"_relevance\",\"set\",\"increment\",\"decrement\",\"multiply\",\"divide\"]"),
+  graph: "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-VQI_VhpAVxpBWAJCWxtDXCFEXiJFXyJGYiJHYyJIZCJJZiJKaAJLaiJMbAJNbSJObiJPbwJQciNRcyk"
+}
 
+async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
+  const { Buffer } = await import('node:buffer')
+  const wasmArray = Buffer.from(wasmBase64, 'base64')
+  return new WebAssembly.Module(wasmArray)
+}
+
+config.compilerWasm = {
+  getRuntime: async () => await import("@prisma/client/runtime/query_compiler_fast_bg.mysql.mjs"),
+
+  getQueryCompilerWasmModule: async () => {
+    const { wasm } = await import("@prisma/client/runtime/query_compiler_fast_bg.mysql.wasm-base64.mjs")
+    return await decodeBase64AsWasm(wasm)
+  },
+
+  importName: "./query_compiler_fast_bg.js"
+}
 
 
 
@@ -84,12 +67,14 @@ export interface PrismaClientConstructor {
    * Type-safe database client for TypeScript
    * @example
    * ```
-   * const prisma = new PrismaClient()
+   * const prisma = new PrismaClient({
+   *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
+   * })
    * // Fetch zero or more Products
    * const products = await prisma.products.findMany()
    * ```
    * 
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
+   * Read more in our [docs](https://pris.ly/d/client).
    */
 
   new <
@@ -97,7 +82,7 @@ export interface PrismaClientConstructor {
     LogOpts extends LogOptions<Options> = LogOptions<Options>,
     OmitOpts extends Prisma.PrismaClientOptions['omit'] = Options extends { omit: infer U } ? U : Prisma.PrismaClientOptions['omit'],
     ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs
-  >(options?: Prisma.Subset<Options, Prisma.PrismaClientOptions> ): PrismaClient<LogOpts, OmitOpts, ExtArgs>
+  >(options: Prisma.PrismaClientConstructorArgs<Options>): PrismaClient<LogOpts, OmitOpts, ExtArgs>
 }
 
 /**
@@ -106,12 +91,14 @@ export interface PrismaClientConstructor {
  * Type-safe database client for TypeScript
  * @example
  * ```
- * const prisma = new PrismaClient()
+ * const prisma = new PrismaClient({
+ *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
+ * })
  * // Fetch zero or more Products
  * const products = await prisma.products.findMany()
  * ```
  * 
- * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
+ * Read more in our [docs](https://pris.ly/d/client).
  */
 
 export interface PrismaClient<
@@ -140,7 +127,7 @@ export interface PrismaClient<
    * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
    * ```
    *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
   $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
 
@@ -152,7 +139,7 @@ export interface PrismaClient<
    * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
    * ```
    *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
   $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
 
@@ -163,7 +150,7 @@ export interface PrismaClient<
    * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
    * ```
    *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
   $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
 
@@ -175,7 +162,7 @@ export interface PrismaClient<
    * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
    * ```
    *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
   $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
 
@@ -191,12 +178,11 @@ export interface PrismaClient<
    * ])
    * ```
    * 
-   * Read more in our [docs](https://www.prisma.io/docs/concepts/components/prisma-client/transactions).
+   * Read more in our [docs](https://www.prisma.io/docs/orm/prisma-client/queries/transactions).
    */
-  $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: { isolationLevel?: Prisma.TransactionIsolationLevel }): runtime.Types.Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>
+  $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): runtime.Types.Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>
 
   $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => runtime.Types.Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): runtime.Types.Utils.JsPromise<R>
-
 
   $extends: runtime.Types.Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<OmitOpts>, ExtArgs, runtime.Types.Utils.Call<Prisma.TypeMapCb<OmitOpts>, {
     extArgs: ExtArgs
@@ -231,9 +217,28 @@ export interface PrismaClient<
     * ```
     */
   get tbl_test(): Prisma.tbl_testDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.tbl_std`: Exposes CRUD operations for the **tbl_std** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tbl_stds
+    * const tbl_stds = await prisma.tbl_std.findMany()
+    * ```
+    */
+  get tbl_std(): Prisma.tbl_stdDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.tbl_counter`: Exposes CRUD operations for the **tbl_counter** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tbl_counters
+    * const tbl_counters = await prisma.tbl_counter.findMany()
+    * ```
+    */
+  get tbl_counter(): Prisma.tbl_counterDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
-export function getPrismaClientClass(dirname: string): PrismaClientConstructor {
-  config.dirname = dirname
+export function getPrismaClientClass(): PrismaClientConstructor {
   return runtime.getPrismaClient(config) as unknown as PrismaClientConstructor
 }

@@ -11,4 +11,6 @@
 export type * from './models/products.ts'
 export type * from './models/student.ts'
 export type * from './models/tbl_test.ts'
+export type * from './models/tbl_std.ts'
+export type * from './models/tbl_counter.ts'
 export type * from './commonInputTypes.ts'

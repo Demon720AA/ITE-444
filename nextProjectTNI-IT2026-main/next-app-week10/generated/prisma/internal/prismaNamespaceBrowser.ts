@@ -24,34 +24,38 @@ export const Decimal = runtime.Decimal
 
 
 export const NullTypes = {
-  DbNull: runtime.objectEnumValues.classes.DbNull as (new (secret: never) => typeof runtime.objectEnumValues.instances.DbNull),
-  JsonNull: runtime.objectEnumValues.classes.JsonNull as (new (secret: never) => typeof runtime.objectEnumValues.instances.JsonNull),
-  AnyNull: runtime.objectEnumValues.classes.AnyNull as (new (secret: never) => typeof runtime.objectEnumValues.instances.AnyNull),
+  DbNull: runtime.NullTypes.DbNull as (new (secret: never) => typeof runtime.DbNull),
+  JsonNull: runtime.NullTypes.JsonNull as (new (secret: never) => typeof runtime.JsonNull),
+  AnyNull: runtime.NullTypes.AnyNull as (new (secret: never) => typeof runtime.AnyNull),
 }
 /**
  * Helper for filtering JSON entries that have `null` on the database (empty on the db)
  *
  * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
  */
-export const DbNull = runtime.objectEnumValues.instances.DbNull
+export const DbNull = runtime.DbNull
+
 /**
  * Helper for filtering JSON entries that have JSON `null` values (not empty on the db)
  *
  * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
  */
-export const JsonNull = runtime.objectEnumValues.instances.JsonNull
+export const JsonNull = runtime.JsonNull
+
 /**
  * Helper for filtering JSON entries that are `Prisma.DbNull` or `Prisma.JsonNull`
  *
  * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
  */
-export const AnyNull = runtime.objectEnumValues.instances.AnyNull
+export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
   products: 'products',
   student: 'student',
-  tbl_test: 'tbl_test'
+  tbl_test: 'tbl_test',
+  tbl_std: 'tbl_std',
+  tbl_counter: 'tbl_counter'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -103,6 +107,24 @@ export const Tbl_testScalarFieldEnum = {
 export type Tbl_testScalarFieldEnum = (typeof Tbl_testScalarFieldEnum)[keyof typeof Tbl_testScalarFieldEnum]
 
 
+export const Tbl_stdScalarFieldEnum = {
+  id: 'id',
+  std_code: 'std_code',
+  std_name: 'std_name',
+  dateCreate: 'dateCreate'
+} as const
+
+export type Tbl_stdScalarFieldEnum = (typeof Tbl_stdScalarFieldEnum)[keyof typeof Tbl_stdScalarFieldEnum]
+
+
+export const Tbl_counterScalarFieldEnum = {
+  id: 'id',
+  dateCreate: 'dateCreate'
+} as const
+
+export type Tbl_counterScalarFieldEnum = (typeof Tbl_counterScalarFieldEnum)[keyof typeof Tbl_counterScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -143,4 +165,12 @@ export const tbl_testOrderByRelevanceFieldEnum = {
 } as const
 
 export type tbl_testOrderByRelevanceFieldEnum = (typeof tbl_testOrderByRelevanceFieldEnum)[keyof typeof tbl_testOrderByRelevanceFieldEnum]
+
+
+export const tbl_stdOrderByRelevanceFieldEnum = {
+  std_code: 'std_code',
+  std_name: 'std_name'
+} as const
+
+export type tbl_stdOrderByRelevanceFieldEnum = (typeof tbl_stdOrderByRelevanceFieldEnum)[keyof typeof tbl_stdOrderByRelevanceFieldEnum]
 

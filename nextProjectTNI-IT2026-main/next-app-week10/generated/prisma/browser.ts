@@ -32,3 +32,13 @@ export type student = Prisma.studentModel
  * 
  */
 export type tbl_test = Prisma.tbl_testModel
+/**
+ * Model tbl_std
+ * 
+ */
+export type tbl_std = Prisma.tbl_stdModel
+/**
+ * Model tbl_counter
+ * 
+ */
+export type tbl_counter = Prisma.tbl_counterModel

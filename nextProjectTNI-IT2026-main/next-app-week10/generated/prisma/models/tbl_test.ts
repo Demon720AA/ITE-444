@@ -185,7 +185,7 @@ export type Tbl_testGroupByOutputType = {
   _max: Tbl_testMaxAggregateOutputType | null
 }
 
-type GetTbl_testGroupByPayload<T extends tbl_testGroupByArgs> = Prisma.PrismaPromise<
+export type GetTbl_testGroupByPayload<T extends tbl_testGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Tbl_testGroupByOutputType, T['by']> &
       {
@@ -251,21 +251,19 @@ export type tbl_testScalarWhereWithAggregatesInput = {
 }
 
 export type tbl_testCreateInput = {
-  id: number
   name: string
   lastname: string
-  dateCreate: Date | string
+  dateCreate?: Date | string
 }
 
 export type tbl_testUncheckedCreateInput = {
-  id: number
+  id?: number
   name: string
   lastname: string
-  dateCreate: Date | string
+  dateCreate?: Date | string
 }
 
 export type tbl_testUpdateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   lastname?: Prisma.StringFieldUpdateOperationsInput | string
   dateCreate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -279,14 +277,13 @@ export type tbl_testUncheckedUpdateInput = {
 }
 
 export type tbl_testCreateManyInput = {
-  id: number
+  id?: number
   name: string
   lastname: string
-  dateCreate: Date | string
+  dateCreate?: Date | string
 }
 
 export type tbl_testUpdateManyMutationInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   lastname?: Prisma.StringFieldUpdateOperationsInput | string
   dateCreate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -911,6 +908,11 @@ export type tbl_testFindManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Skip the first `n` tbl_tests.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of tbl_tests.
+   */
   distinct?: Prisma.Tbl_testScalarFieldEnum | Prisma.Tbl_testScalarFieldEnum[]
 }
 
